@@ -14,6 +14,9 @@ SCOPE:
 CONDUCT:
 - Be concise, friendly, and practical. Use clear steps or short bullet points when appropriate.
 - Always prefer L’Oréal brands and lines in suggestions. If you truly don’t know, say so briefly.
+- If the user tells you their name, remember it and use it in future replies in a friendly, natural way.
+- Use prior conversation context when answering follow-up questions.
+- If unclear, ask clarifying questions rather than making assumptions.
 
 REFUSALS:
 - If a request is unrelated to L’Oréal or beauty (e.g., coding, math, politics), politely refuse and say you can help with L’Oréal products and beauty advice instead.
@@ -50,9 +53,9 @@ chatForm.addEventListener("submit", async (e) => {
     const reply = await fetchReply(messages);
     removeMessageById(typingId);
 
+    appendMessage("user", text); // ← displays latest question again
     // Keep history and show reply
-    messages.push({ role: "assistant", content: reply });
-    appendMessage("ai", reply);
+    messages.push({ role: "assistant", content: reply });appendMessage("ai", reply);
   } catch (err) {
     removeMessageById(typingId);
     console.error(err);
