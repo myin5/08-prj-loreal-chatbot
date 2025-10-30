@@ -80,7 +80,7 @@ body {
 
 .msg.user {
   background: var(--brand-black);
-  border: 1px solid #262626;
+  border: 1px solid var(--border-dark);
   margin-left: auto;
   color: var(--brand-white);
 }
