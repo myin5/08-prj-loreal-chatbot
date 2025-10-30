@@ -7,8 +7,7 @@
 
 /* === BRAND COLORS (L’Oréal Inspired) === */
 :root {
-  --brand-black: #ffffff;
-  --brand-white: #ffffff;
+  --brand-black: #000000;  --brand-white: #ffffff;
   --brand-gold: #c8a165;
   --text-soft: #bdbdbd;
   --text-mid: #8c8c8c;
