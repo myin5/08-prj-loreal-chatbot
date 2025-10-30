@@ -92,7 +92,7 @@ async function fetchReply(messages) {
     body: JSON.stringify({
       // Your Worker should pass this straight to OpenAI:
       // { model, messages, temperature, etc. }
-      model: "gpt-4o-mini",      // or "gpt-3.5-turbo" depending on your Worker
+      model: "gpt-4o",      // or "gpt-3.5-turbo" depending on your Worker
       messages,
       temperature: 0.5
     }),
