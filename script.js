@@ -2,7 +2,7 @@
 const chatForm = document.getElementById("chatForm");
 const userInput = document.getElementById("userInput");
 const chatWindow = document.getElementById("chatWindow");
-
+const workerURL ='https://project8-chatbot.myin5.workers.dev/';
 // Set initial message
 chatWindow.textContent = "👋 Hello! How can I help you today?";
 
