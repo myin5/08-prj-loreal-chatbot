@@ -88,18 +88,27 @@ async function fetchReply(messages) {
   const res = await fetch(workerURL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      messages // ✅ Only send messages, let Worker handle model + tokens
-    }),
+    body: JSON.stringify({ messages }) // ✅ Only send messages
   });
 
   if (!res.ok) {
-    const text = await res.text().catch(() => "");
-    throw new Error(`Worker error ${res.status}: ${text}`);
+    const errorText = await res.text().catch(() => "Unknown error");
+    throw new Error(`Worker error ${res.status}: ${errorText}`);
   }
 
   const data = await res.json();
+
+  // ✅ If the worker returned an error from OpenAI, show it in console
+  if (data.error) {
+    console.error("OpenAI Error:", data.error.message);
+    throw new Error(data.error.message);
+  }
+
   const reply = data?.choices?.[0]?.message?.content;
-  if (!reply) throw new Error("No content returned from API.");
+  if (!reply) {
+    console.error("Response object:", data);
+    throw new Error("No content returned from API.");
+  }
+
   return reply.trim();
 }
