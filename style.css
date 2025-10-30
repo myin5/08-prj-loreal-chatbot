@@ -1,143 +1,181 @@
-/* —— basic reset —— */
+/* === RESET === */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* —— body + fonts —— */
+/* === BRAND COLORS (L’Oréal Inspired) === */
+:root {
+  --brand-black: #ffffff;
+  --brand-white: #ffffff;
+  --brand-gold: #c8a165;
+  --text-soft: #bdbdbd;
+  --text-mid: #8c8c8c;
+  --border-dark: #FF003B;
+  --surface-base: #ffffff;  --surface-chat: #111111;
+}
+
+/* === PAGE & LAYOUT === */
 body {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  color: #333;
+  background: var(--brand-black);
+  color: var(--brand-white);
   display: flex;
   justify-content: center;
+  padding: 40px 0;
 }
 
 .page-wrapper {
   width: 90%;
   max-width: 900px;
+  background: var(--surface-base);
+  border: 1px solid var(--border-dark);
+  border-radius: 14px;
+  padding: 32px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
 }
 
-/* header */
+/* === HEADER / BRANDING === */
 .site-header {
   text-align: center;
-  padding-top: 50px;
+  margin-bottom: 30px;
+}
+
+.brand-logo {
+  filter: brightness(0) invert(1);
+  margin-bottom: 12px;
 }
 
 .site-title {
-  font-size: 22px;
-  font-weight: 500;
-  margin-bottom: 10px;
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.9;
 }
 
-/* chat window */
+/* === CHAT WINDOW === */
 .chatbox {
-  margin: 40px 0;
+  margin: 28px 0;
 }
 
 .chat-window {
-  height: 360px;
-  border: 1px solid #000;
-  padding: 20px;
+  height: 420px;
+  border: 1px solid var(--border-dark);
+  padding: 22px;
   font-size: 18px;
-  line-height: 1.5;
+  line-height: 1.65;
   overflow-y: auto;
-  background: #fafafa;
+  background: var(--surface-chat);
+  border-radius: 14px;
   white-space: pre-line;
 }
 
-/* messages */
+/* === MESSAGES === */
 .msg {
-  margin-bottom: 14px;
-  line-height: 1.5;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  max-width: 90%;
 }
 
 .msg.user {
-  color: #000;
+  background: var(--brand-black);
+  border: 1px solid var(--border-dark);
+  margin-left: auto;
+  color: var(--brand-white);
 }
 
 .msg.ai {
-  color: #666666;
+  background: #1a1a1a;
+  border: 1px solid #262626;
+  color: var(--text-soft);
 }
 
-/* input row */
+.msg.system {
+  font-size: 16px;
+  color: var(--brand-gold);
+  opacity: 0.85;
+}
+
+/* === INPUT AREA === */
 .chat-form {
   display: flex;
-  gap: 12px;
-  margin-top: 16px;
+  gap: 14px;
+  margin-top: 22px;
 }
 
 .chat-form input {
   flex: 1;
-  padding: 12px;
-  border: 1px solid #ccc;
+  padding: 14px 18px;
+  background: var(--surface-chat);
+  border: 1px solid var(--border-dark);
+  border-radius: 10px;
   font-size: 18px;
+  color: var(--brand-white);
+}
+
+.chat-form input::placeholder {
+  color: var(--text-mid);
 }
 
 .chat-form input:focus {
-  outline: 2px solid #000;
+  outline: 2px solid var(--brand-gold);
   outline-offset: 2px;
 }
 
+/* Send Button */
 .chat-form button {
-  font-size: 18px;
-  background: #000;
-  color: #fff;
+  background: var(--brand-gold);
+  color: var(--brand-black);
   border: none;
-  padding: 12px;
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: transform 0.1s ease, filter 0.2s ease;
 }
 
 .chat-form button .material-icons {
-  font-size: 24px;
+  font-size: 26px;
 }
 
 .chat-form button:hover {
-  background: #666666;
+  filter: brightness(1.08);
 }
 
-.chat-form button:focus {
-  outline: 2px solid #000;
-  outline-offset: 2px;
+.chat-form button:active {
+  transform: translateY(1px);
 }
 
-/* visually hidden */
+/* === ACCESSIBILITY === */
 .visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;
-  padding: 0;
-  margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
-  border: 0;
+  clip: rect(0, 0, 0, 0);
 }
 
-/* footer */
+/* === FOOTER === */
 .site-footer {
-  margin: 60px 0 40px;
+  margin-top: 48px;
   text-align: center;
   font-size: 14px;
-  color: #666;
-}
-
-.site-footer nav {
-  margin-top: 12px;
+  color: var(--text-mid);
 }
 
 .site-footer a {
-  margin: 0 8px;
-  color: #000;
+  margin: 0 10px;
+  color: var(--brand-gold);
   text-decoration: none;
+  font-weight: 500;
 }
 
 .site-footer a:hover {
-  color: #666666;
+  opacity: 0.75;
 }
