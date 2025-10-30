@@ -80,7 +80,7 @@ body {
 
 .msg.user {
   background: var(--brand-black);
-  border: 1px solid var(--border-dark);
+  border: 1px solid #262626;
   margin-left: auto;
   color: var(--brand-white);
 }
@@ -177,4 +177,22 @@ body {
 
 .site-footer a:hover {
   opacity: 0.75;
+}
+
+img, svg { max-width: 100%; height: auto; }
+.brand-logo { display: inline-block; max-width: 220px; height: auto; }
+.chat-form input { min-width: 0; flex: 1 1 auto; }
+.chat-form button { flex: 0 0 56px; }
+.chat-window { height: clamp(300px, 55vh, 520px); }
+
+@media (max-width: 480px) {
+  .page-wrapper { width: min(92%, 900px); padding: 16px; border-radius: 12px; }
+  .brand-logo { max-width: 160px; }
+  .site-title { font-size: 16px; letter-spacing: 0.08em; }
+  .chat-window { padding: 16px; height: clamp(260px, 50vh, 440px); }
+  .msg { font-size: 16px; padding: 10px 12px; max-width: 100%; }
+  .chat-form { gap: 10px; margin-top: 14px; }
+  .chat-form input { padding: 12px 14px; font-size: 16px; }
+  .chat-form button { width: 48px; height: 48px; border-radius: 10px; }
+  .chat-form button .material-icons { font-size: 22px; }
 }
