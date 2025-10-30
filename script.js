@@ -53,8 +53,7 @@ chatForm.addEventListener("submit", async (e) => {
     const reply = await fetchReply(messages);
     removeMessageById(typingId);
 
-    appendMessage("user", text); // ← displays latest question again
-    // Keep history and show reply
+  // Keep history and show reply
     messages.push({ role: "assistant", content: reply });appendMessage("ai", reply);
   } catch (err) {
     removeMessageById(typingId);
