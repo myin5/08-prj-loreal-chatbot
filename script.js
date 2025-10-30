@@ -73,6 +73,13 @@ function appendMessage(role, text) {
   chatWindow.scrollTop = chatWindow.scrollHeight;
   return el.dataset.msgId;
 }
+function removeMessageById(id) { 
+  const el = chatWindow.querySelector(`[data-msg-id="${id}"]`); 
+  if (el) el.remove(); 
+} 
+function cryptoRandomId() { 
+  return Math.random().toString(36).slice(2) + Date.now().toString(36); 
+}
 
 async function fetchReply(messages) {
   const res = await fetch(workerURL, {
