@@ -84,17 +84,12 @@ function cryptoRandomId() {
   return Math.random().toString(36).slice(2) + Date.now().toString(36);
 }
 
-// Calls your Cloudflare Worker which in turn calls OpenAI Chat Completions
 async function fetchReply(messages) {
   const res = await fetch(workerURL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      // Your Worker should pass this straight to OpenAI:
-      // { model, messages, temperature, etc. }
-      model: "gpt-4o",      // or "gpt-3.5-turbo" depending on your Worker
-      messages,
-      temperature: 0.5
+      messages // ✅ Only send messages, let Worker handle model + tokens
     }),
   });
 
@@ -104,9 +99,6 @@ async function fetchReply(messages) {
   }
 
   const data = await res.json();
-
-  // Expecting OpenAI-like shape:
-  // { choices: [{ message: { content: "..."} }]}
   const reply = data?.choices?.[0]?.message?.content;
   if (!reply) throw new Error("No content returned from API.");
   return reply.trim();
